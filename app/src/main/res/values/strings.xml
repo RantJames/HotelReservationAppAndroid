@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidTut</string>
+    <string name="welcome_text">Hotel Reservation System</string>
+</resources>
