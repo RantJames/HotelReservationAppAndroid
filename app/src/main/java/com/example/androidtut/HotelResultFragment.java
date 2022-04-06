@@ -114,7 +114,7 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
         Bundle bundle = new Bundle();
         bundle.putString("hotel name", hotelName);
         bundle.putString("hotel price", price);
-        Log.e("Availability",availability);
+        //Log.e("Availability",availability);
         bundle.putString("hotel availability", availability);
         bundle.putString("address", address);
 
