@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/hotel_guest_list_name_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal"
+                android:text="Enter Guest Name"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/hotel_guest_list_name_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal"
+            android:minHeight="48dp"
+            android:text="Enter Guest Name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/hotel_guest_list_name_text_view"
+            app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_name_text_view" />
+
+            <TextView
+                android:id="@+id/hotel_guest_list_sex_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal"
+                android:text="Sex"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/hotel_guest_list_name_text_view"
+                app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_name_edit_text" />
+
+            <RadioGroup
+                android:id="@+id/hotel_guest_list_radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/hotel_guest_list_name_text_view"
+                app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_sex_text_view"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/female_sex_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="Female"
+                    android:textSize="15sp">
+
+                </RadioButton>
+                <RadioButton
+                    android:id="@+id/male_sex_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="Male"
+                    android:textSize="15sp">
+                </RadioButton>
+            </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

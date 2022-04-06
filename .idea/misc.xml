@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AndroidTut/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AndroidTut/app/src/main/res/layout/hotel_guest_details_fragment.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/AndroidTut/app/src/main/res/layout/hotel_result_fragment.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AndroidTut/app/src/main/res/layout/hotel_guest_details_layout.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AndroidTut/app/src/main/res/layout/hotel_guest_list_layout.xml" value="0.33" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AndroidTut/app/src/main/res/layout/hotel_result_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AndroidTut/app/src/main/res/layout/hotel_result_layout.xml" value="0.16875" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AndroidTut/app/src/main/res/layout/hotel_search_layout.xml" value="0.22" />
       </map>
