@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.List;
 
 public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.ViewHolder> {
@@ -16,11 +17,13 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
     private List<GuestListData> guestListData;
     private LayoutInflater layoutInflater;
     private ItemClickListener clickListener;
+    private Integer guestCount;
 
     //Data gets passed in the constructor
-    GuestListAdapter(Context context, List<GuestListData> guestListData) {
+    GuestListAdapter(Context context, List<GuestListData> guestListData, Integer guestCount) {
         this.layoutInflater = LayoutInflater.from(context);
         this.guestListData = guestListData;
+        this.guestCount = guestCount;
     }
 
     @NonNull
@@ -32,9 +35,9 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull GuestListAdapter.ViewHolder holder, int position) {
-        String guestName = guestListData.get(position).getGuest_name();
-        String guestSex = guestListData.get(position).getSex();
-        //String hotelAvailability = hotelListData.get(position).getAvailability();
+//        String guestName = guestListData.get(position).getGuest_name();
+//        String guestSex = guestListData.get(position).getSex();
+//        //String hotelAvailability = hotelListData.get(position).getAvailability();
 
         // set up the text
         //holder.guestName.setText(guestName);
@@ -45,7 +48,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
     @Override
     public int getItemCount() {
         if (guestListData != null) {
-            return guestListData.size();
+            return guestCount;
         } else {
             return 0;
         }

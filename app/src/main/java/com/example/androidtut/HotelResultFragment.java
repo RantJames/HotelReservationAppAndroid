@@ -27,6 +27,7 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
     TextView headingTextView;
     ProgressBar progressBar;
     List<HotelListData> userListResponseData;
+    Integer numguests;
 
     @Nullable
     @Override
@@ -44,7 +45,7 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
         progressBar=view.findViewById(R.id.progress_bar);
         String checkInDate =getArguments().getString("check in date");
         String checkoutdate=getArguments().getString("check out date");
-        Integer numguests = getArguments().getInt("number of guests");
+        numguests = getArguments().getInt("number of guests");
 
 
         headingTextView.setText("Welcome, displaying hotel for "+numguests+" for checkin date "+ checkInDate +" and checkoutdate "+checkoutdate);
@@ -117,6 +118,7 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
         //Log.e("Availability",availability);
         bundle.putString("hotel availability", availability);
         bundle.putString("address", address);
+        bundle.putInt("numguests", numguests);
 
         HotelGuestDetailsFragment hotelGuestDetailsFragment = new HotelGuestDetailsFragment();
         hotelGuestDetailsFragment.setArguments(bundle);

@@ -33,6 +33,7 @@ public class HotelGuestDetailsFragment extends Fragment {
     RadioButton guestSexRadioButton;
     ProgressBar progressBar;
     List<GuestListData> userListResponseData;
+    Integer numguests;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,8 +60,9 @@ public class HotelGuestDetailsFragment extends Fragment {
         String hotelName = getArguments().getString("hotel name");
         String hotelPrice = getArguments().getString("hotel price");
         String hotelAvailability = getArguments().getString("hotel availability");
+        numguests = getArguments().getInt("numguests");
 
-        hotelRecapTextView.setText("You have selected " + hotelName + ". The cost will be $ " + hotelPrice + " and availability is " + hotelAvailability);
+        hotelRecapTextView.setText("You have selected " + hotelName + ". The cost will be $ " + hotelPrice + " and availability is " + hotelAvailability+" num of guests is "+numguests);
 
         getGuestListsData();
         setupRecyclerView();
@@ -107,7 +109,7 @@ public class HotelGuestDetailsFragment extends Fragment {
             progressBar.setVisibility(View.GONE);
             RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            GuestListAdapter guestListAdapter = new GuestListAdapter(getActivity(),initGuestListData());
+            GuestListAdapter guestListAdapter = new GuestListAdapter(getActivity(),initGuestListData(), numguests);
             recyclerView.setAdapter(guestListAdapter);
 
             //Bind the click listener
