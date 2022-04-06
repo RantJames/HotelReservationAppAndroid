@@ -37,12 +37,14 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
     public void onBindViewHolder(@NonNull HotelListAdapter.ViewHolder holder, int position) {
         String hotelName = hotelListData.get(position).getHotel_name();
         String hotelPrice = hotelListData.get(position).getPrice();
-        String hotelAvailability = hotelListData.get(position).getAvailability();
+        String hotelAddress = hotelListData.get(position).getAddress();
+        String hotelAvailability = hotelListData.get(position).getAvailable_rooms();
 
         // set up the text
         holder.hotelName.setText(hotelName);
         holder.hotelAvailability.setText(hotelAvailability);
         holder.hotelPrice.setText(hotelPrice);
+        holder.hotelAddress.setText(hotelAddress);
     }
 
     @Override
@@ -61,13 +63,14 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView hotelName, hotelPrice, hotelAvailability;
+        TextView hotelName, hotelPrice, hotelAvailability, hotelAddress;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             hotelName = itemView.findViewById(R.id.hotel_name_text_view);
             hotelPrice = itemView.findViewById(R.id.price_text_view);
             hotelAvailability = itemView.findViewById(R.id.availability_text_view);
+            hotelAddress = itemView.findViewById(R.id.address_text_view);
 
             itemView.setOnClickListener(this);
 

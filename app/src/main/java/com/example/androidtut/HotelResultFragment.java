@@ -1,6 +1,7 @@
 package com.example.androidtut;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,20 +50,20 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
         headingTextView.setText("Welcome, displaying hotel for "+numguests+" for checkin date "+ checkInDate +" and checkoutdate "+checkoutdate);
 
         getHotelsListsData();
-        setupRecyclerView();
+        //setupRecyclerView();
 
     }
     public ArrayList<HotelListData> initHotelListData() {
         ArrayList<HotelListData> list = new ArrayList<>();
 
-        list.add(new HotelListData("Halifax Regional Hotel", "2000$", "true"));
-        list.add(new HotelListData("Hotel Pearl", "500$", "false"));
-        list.add(new HotelListData("Hotel Amano", "800$", "true"));
-        list.add(new HotelListData("San Jones", "250$", "false"));
-        list.add(new HotelListData("Halifax Regional Hotel", "2000$", "true"));
-        list.add(new HotelListData("Hotel Pearl", "500$", "false"));
-        list.add(new HotelListData("Hotel Amano", "800$", "true"));
-        list.add(new HotelListData("San Jones", "250$", "false"));
+        list.add(new HotelListData("Halifax Regional Hotel", "2000$", "A", "50"));
+        list.add(new HotelListData("Hotel Pearl", "500$", "A", "50"));
+        list.add(new HotelListData("Hotel Amano", "800$", "A", "50"));
+        list.add(new HotelListData("San Jones", "250$", "A", "50"));
+        list.add(new HotelListData("Halifax Regional Hotel", "2000$", "A", "50"));
+        list.add(new HotelListData("Hotel Pearl", "500$", "A", "50"));
+        list.add(new HotelListData("Hotel Amano", "800$", "A", "50"));
+        list.add(new HotelListData("San Jones", "250$", "A", "50"));
 
         return list;
     }
@@ -72,11 +73,12 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
             @Override
             public void success(List<HotelListData> userListResponses, Response response) {
                 // in this method we will get the response from API
+                Log.e("Hotels", String.valueOf(userListResponses.size()));
                 userListResponseData = userListResponses;
 
 
                 // Set up the RecyclerView
-                //setupRecyclerView();
+                setupRecyclerView();
             }
 
             @Override
@@ -91,7 +93,7 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
         progressBar.setVisibility(View.GONE);
         RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        HotelListAdapter hotelListAdapter = new HotelListAdapter(getActivity(),initHotelListData());
+        HotelListAdapter hotelListAdapter = new HotelListAdapter(getActivity(),userListResponseData);
         recyclerView.setAdapter(hotelListAdapter);
 
         //Bind the click listener
@@ -100,18 +102,21 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
     }
     @Override
     public void onClick(View view, int position) {
-       // HotelListData hotelListData = userListResponseData.get(position);
-        HotelListData hotelListData = initHotelListData().get(position);
+       HotelListData hotelListData = userListResponseData.get(position);
+//        HotelListData hotelListData = initHotelListData().get(position);
 
 
         String hotelName = hotelListData.getHotel_name();
         String price = hotelListData.getPrice();
-        String availability = hotelListData.getAvailability();
+        String availability = hotelListData.getAvailable_rooms();
+        String address = hotelListData.getAddress();
 
         Bundle bundle = new Bundle();
         bundle.putString("hotel name", hotelName);
         bundle.putString("hotel price", price);
+        Log.e("Availability",availability);
         bundle.putString("hotel availability", availability);
+        bundle.putString("address", address);
 
         HotelGuestDetailsFragment hotelGuestDetailsFragment = new HotelGuestDetailsFragment();
         hotelGuestDetailsFragment.setArguments(bundle);

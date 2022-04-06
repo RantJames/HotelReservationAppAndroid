@@ -10,8 +10,9 @@ import retrofit.http.Query;
 public interface ApiInterface {
 
     // API's endpoints
-    @GET("/hotelsList")
+    @GET("/HotelGenList/")
     public void getHotelsLists(Callback<List<HotelListData>> callback);
+
     public void getGuestsLists(Callback<List<GuestListData>> callback);
 
 
