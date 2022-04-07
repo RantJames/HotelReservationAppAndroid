@@ -52,6 +52,7 @@ public class HotelSearchFragment extends Fragment {
         search = view.findViewById(R.id.search_button);
         mainLayout = view.findViewById(R.id.main_layout);
 
+
         //set Title Text
         titleTextView.setText(R.string.welcome_text);
 
@@ -95,7 +96,7 @@ public class HotelSearchFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = simpleDateFormat.format(calendar.getTime());
         return formattedDate;
     }

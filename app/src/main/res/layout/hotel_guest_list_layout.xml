@@ -12,13 +12,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/hotel_guest_list_name_text_view"
+                android:id="@+id/hotel_guest_list_first_name_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center_horizontal"
-                android:text="Enter Guest Name"
+                android:text="Enter First Name"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="15sp"
@@ -26,39 +26,120 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/hotel_guest_list_name_edit_text"
+            android:id="@+id/hotel_guest_list_first_name_edittext_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:minHeight="48dp"
-            android:text="Enter Guest Name"
+            android:text=""
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@id/hotel_guest_list_name_text_view"
-            app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_name_text_view" />
+            app:layout_constraintStart_toStartOf="@id/hotel_guest_list_first_name_text_view"
+            app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_first_name_text_view" />
 
-            <TextView
+    <TextView
+        android:id="@+id/hotel_guest_list_last_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Enter Last Name"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/hotel_guest_list_first_name_text_view" />
+
+    <EditText
+            android:id="@+id/hotel_guest_list_last_name_edittext_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal"
+            android:minHeight="48dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_last_name_text_view" />
+
+    <TextView
+        android:id="@+id/hotel_guest_list_address_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Address"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/hotel_guest_list_first_name_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_last_name_edittext_view" />
+
+    <EditText
+        android:id="@+id/hotel_guest_list_address_edittext_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:minHeight="48dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/hotel_guest_list_first_name_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_address_text_view" />
+
+    <TextView
+        android:id="@+id/hotel_guest_list_age_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Age"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/hotel_guest_list_first_name_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_address_edittext_view" />
+
+    <EditText
+        android:id="@+id/hotel_guest_list_age_edittext_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:minHeight="48dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/hotel_guest_list_first_name_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_age_text_view" />
+
+    <TextView
                 android:id="@+id/hotel_guest_list_sex_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center_horizontal"
                 android:text="Sex"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@id/hotel_guest_list_name_text_view"
-                app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_name_edit_text" />
+                app:layout_constraintStart_toStartOf="@id/hotel_guest_list_last_name_text_view"
+                app:layout_constraintTop_toTopOf="@id/hotel_guest_list_address_text_view" />
 
             <RadioGroup
                 android:id="@+id/hotel_guest_list_radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/hotel_guest_list_name_text_view"
                 app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_sex_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:orientation="horizontal">
 
                 <RadioButton
