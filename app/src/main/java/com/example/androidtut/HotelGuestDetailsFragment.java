@@ -114,27 +114,7 @@ public class HotelGuestDetailsFragment extends Fragment {
     }
 
 
-    //        private void getGuestListsData() {
-//            progressBar.setVisibility(View.VISIBLE);
-//            Api.getClient().postGuestsLists(new Callback<List<GuestListData>>() {
-//                @Override
-//                public void success(List<GuestListData> userListResponses, Response response) {
-//                    // in this method we will get the response from API
-//                    userListResponseData = userListResponses;
-//
-//
-//                    // Set up the RecyclerView
-//                    //setupRecyclerView();
-//                }
-//
-//                @Override
-//                public void failure(RetrofitError error) {
-//                    // if error occurs in network transaction then we can get the error in this method.
-//                    Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
-//
-//                }
-//            });
-//        }
+
     private void setupRecyclerView() {
         progressBar.setVisibility(View.GONE);
         RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
@@ -143,36 +123,6 @@ public class HotelGuestDetailsFragment extends Fragment {
 //            a=guestListAdapter.getGuestList();
         recyclerView.setAdapter(guestListAdapter);
 
-        //Bind the click listener
-        //hotelListAdapter.setClickListener(this::onClick);
-
     }
-
-
-//        @Override
-//        public void onClick(View view, int position) {
-//            // HotelListData hotelListData = userListResponseData.get(position);
-//            HotelListData hotelListData = initGuestListData().get(position);
-//
-//
-//            String hotelName = hotelListData.getHotel_name();
-//            String price = hotelListData.getPrice();
-//            String availability = hotelListData.getAvailability();
-//
-//            Bundle bundle = new Bundle();
-//            bundle.putString("hotel name", hotelName);
-//            bundle.putString("hotel price", price);
-//            bundle.putString("hotel availability", availability);
-//
-//            HotelGuestDetailsFragment hotelGuestDetailsFragment = new HotelGuestDetailsFragment();
-//            hotelGuestDetailsFragment.setArguments(bundle);
-//
-//            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//            fragmentTransaction.remove(HotelResultFragment.this);
-//            fragmentTransaction.replace(R.id.main_layout, hotelGuestDetailsFragment);
-//            fragmentTransaction.addToBackStack(null);
-//            fragmentTransaction.commitAllowingStateLoss();
-//
-//        }
 
 }

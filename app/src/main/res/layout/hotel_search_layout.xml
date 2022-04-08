@@ -88,55 +88,77 @@
                 android:id="@+id/num_guest_editText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:hint="Number"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="@id/checkout_date_picker"
                 app:layout_constraintTop_toTopOf="@id/num_guest_text_view"/>
-
             <TextView
-                android:id="@+id/guest_name_text_view"
+                android:id="@+id/city_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-black"
-                android:text="Enter Name"
+                android:text="City"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 app:flow_verticalAlign="center"
-                app:layout_constraintStart_toStartOf="@id/checkout_date_picker"
+                app:layout_constraintStart_toStartOf="@id/num_guest_text_view"
                 app:layout_constraintTop_toBottomOf="@id/num_guest_text_view" />
 
-            <EditText
-                android:id="@+id/guest_name_editText"
+            <Spinner
+                android:id="@+id/city_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@id/checkout_date_picker"
-                app:layout_constraintTop_toTopOf="@id/guest_name_text_view"/>
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/num_guest_editText"
+                app:layout_constraintEnd_toEndOf="@id/num_guest_editText"/>
 
-            <Button
-                android:id="@+id/confirm_my_search_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/guest_name_editText"
-                app:layout_constraintStart_toStartOf="@id/guest_name_text_view"
-                app:layout_constraintEnd_toEndOf="@id/checkout_date_picker"
-                android:textColor="@color/black"
-                android:layout_marginTop="12dp"
-                android:text="Confirm my Search"
-                android:background="@color/teal_200"
-                android:padding="10dp"
-                android:fontFamily="sans-serif-medium"/>
+<!--            <TextView-->
+<!--                android:id="@+id/guest_name_text_view"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:fontFamily="sans-serif-black"-->
+<!--                android:text="Enter Name"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="25sp"-->
+<!--                app:flow_verticalAlign="center"-->
+<!--                app:layout_constraintStart_toStartOf="@id/checkout_date_picker"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/num_guest_text_view" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/guest_name_editText"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Name"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="20sp"-->
+<!--                app:layout_constraintEnd_toEndOf="@id/checkout_date_picker"-->
+<!--                app:layout_constraintTop_toTopOf="@id/guest_name_text_view"/>-->
+
+<!--            <Button-->
+<!--                android:id="@+id/confirm_my_search_button"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/num_guest_editText"-->
+<!--                app:layout_constraintStart_toStartOf="@id/guest_name_text_view"-->
+<!--                app:layout_constraintEnd_toEndOf="@id/checkout_date_picker"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:text="Confirm my Search"-->
+<!--                android:background="@color/teal_200"-->
+<!--                android:padding="10dp"-->
+<!--                android:fontFamily="sans-serif-medium"/>-->
 
             <Button
                 android:id="@+id/search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/confirm_my_search_button"
-                app:layout_constraintStart_toStartOf="@id/guest_name_text_view"
+                app:layout_constraintTop_toBottomOf="@id/city_spinner"
+                app:layout_constraintStart_toStartOf="@id/num_guest_text_view"
                 app:layout_constraintEnd_toEndOf="@id/checkout_date_picker"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"

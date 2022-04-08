@@ -28,7 +28,7 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
     ProgressBar progressBar;
     List<HotelListData> userListResponseData;
     Integer numguests;
-    String checkInDate,checkoutdate;
+    String checkInDate,checkoutdate, city;
 
     @Nullable
     @Override
@@ -47,9 +47,10 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
         checkInDate =getArguments().getString("check in date");
         checkoutdate=getArguments().getString("check out date");
         numguests = getArguments().getInt("number of guests");
+        city = getArguments().getString("city");
 
 
-        headingTextView.setText("Welcome, displaying hotel for "+numguests+" for checkin date "+ checkInDate +" and checkoutdate "+checkoutdate);
+        headingTextView.setText("Welcome, displaying hotels in "+city+" for checkin date "+ checkInDate +" and checkoutdate "+checkoutdate+" and "+numguests+" guests.");
 
         getHotelsListsData();
         //setupRecyclerView();
@@ -71,7 +72,7 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
     }
     private void getHotelsListsData() {
         progressBar.setVisibility(View.VISIBLE);
-        Api.getClient().getHotelsLists(new Callback<List<HotelListData>>() {
+        Api.getClient().getHotelsLists(checkInDate, checkoutdate,city, new Callback<List<HotelListData>>() {
             @Override
             public void success(List<HotelListData> userListResponses, Response response) {
                 // in this method we will get the response from API

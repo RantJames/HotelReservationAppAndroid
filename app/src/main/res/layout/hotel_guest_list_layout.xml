@@ -3,11 +3,13 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/layout_border"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -32,7 +34,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:minHeight="48dp"
-            android:text=""
+            android:hint="First Name"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -49,8 +51,8 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/hotel_guest_list_first_name_text_view" />
+        app:layout_constraintStart_toStartOf="@id/hotel_guest_list_first_name_edittext_view"
+        app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_first_name_edittext_view" />
 
     <EditText
             android:id="@+id/hotel_guest_list_last_name_edittext_view"
@@ -63,7 +65,8 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="Last Name"
+            app:layout_constraintStart_toStartOf="@id/hotel_guest_list_last_name_text_view"
             app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_last_name_text_view" />
 
     <TextView
@@ -91,6 +94,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:hint="Address"
         app:layout_constraintStart_toStartOf="@id/hotel_guest_list_first_name_text_view"
         app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_address_text_view" />
 
@@ -114,10 +118,11 @@
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
         android:minHeight="48dp"
-        android:text=""
+        android:hint="Age"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="@id/hotel_guest_list_first_name_text_view"
         app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_age_text_view" />
 
@@ -132,14 +137,14 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@id/hotel_guest_list_last_name_text_view"
-                app:layout_constraintTop_toTopOf="@id/hotel_guest_list_address_text_view" />
+                app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_age_edittext_view" />
 
             <RadioGroup
                 android:id="@+id/hotel_guest_list_radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/hotel_guest_list_sex_text_view"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/hotel_guest_list_age_edittext_view"
                 android:orientation="horizontal">
 
                 <RadioButton

@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">AndroidTut</string>
     <string name="welcome_text">Hotel Reservation System</string>
+    <string-array name="city">
+        <item>Halifax</item>
+        <item>Washington</item>
+        <item>New Delhi</item>
+        <item>Vegas</item>
+    </string-array>
 </resources>
