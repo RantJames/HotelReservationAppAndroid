@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,8 +56,6 @@ public class HotelGuestDetailsFragment extends Fragment {
         EditText guestDetailsNameEditText = view.findViewById(R.id.hotel_guest_list_first_name_edittext_view);
         TextView guestDetailsSexTextView = view.findViewById(R.id.hotel_guest_list_sex_text_view);
         RadioGroup guestSexRadioGroup = view.findViewById(R.id.hotel_guest_list_radio_group);
-//        RadioButton guestMaleRadioButton = view.findViewById(R.id.male_sex_radio_button);
-//        RadioButton guestFemaleRadioButton = view.findViewById(R.id.female_sex_radio_button);
         Button guestSubmitButton = view.findViewById(R.id.guest_submit_button);
         progressBar = view.findViewById(R.id.hotel_guest_list_progress_bar);
 
@@ -73,10 +72,6 @@ public class HotelGuestDetailsFragment extends Fragment {
         guestSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                guestName = guestDetailsNameEditText.getText().toString();
-//                int selectedButtonId = guestSexRadioGroup.getCheckedRadioButtonId();
-//                guestSexRadioButton =(RadioButton) view.findViewById(selectedButtonId);
-//                sex=guestSexRadioButton.getText().toString();
                 ArrayList<guestInReservation> guests = guestListAdapter.getGuestList();
                 ReservationData reservationData = new ReservationData(hotelName, checkinDate, checkoutDate, guests);
                 progressBar.setVisibility(View.VISIBLE);
@@ -84,6 +79,18 @@ public class HotelGuestDetailsFragment extends Fragment {
                     @Override
                     public void success(String confirmation, Response response) {
                     Log.e("Confirmation number",confirmation);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("confirmation number", confirmation);
+
+                        //set fragment class arguments
+                        ConfirmationFragment confirmationFragment = new ConfirmationFragment();
+                        confirmationFragment.setArguments(bundle);
+
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.main_layout, confirmationFragment);
+                        fragmentTransaction.remove(HotelGuestDetailsFragment.this);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
                     }
 
                     @Override
