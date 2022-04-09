@@ -50,7 +50,7 @@ public class HotelResultFragment extends Fragment implements ItemClickListener{
         city = getArguments().getString("city");
 
 
-        headingTextView.setText("Welcome, displaying hotels in "+city+" for checkin date "+ checkInDate +" and checkoutdate "+checkoutdate+" and "+numguests+" guests.");
+        headingTextView.setText("Welcome, Displaying hotels in "+city+"\nCheckin Date: "+ checkInDate +"\n Checkout Date: "+checkoutdate+"\n Number of Guests:"+numguests);
 
         getHotelsListsData();
         //setupRecyclerView();

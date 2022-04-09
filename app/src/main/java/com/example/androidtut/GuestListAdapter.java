@@ -2,6 +2,7 @@ package com.example.androidtut;
 
 import android.content.Context;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+
 import java.util.ArrayList;
 
 public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.ViewHolder> {
@@ -21,7 +23,8 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
     private LayoutInflater layoutInflater;
     private ItemClickListener clickListener;
     private Integer guestCount;
-    ArrayList<guestInReservation> guestListData = new ArrayList<>();
+    ArrayList<GuestInReservation> guestListData;
+    ArrayList<ViewHolder> holderList = new ArrayList<>();
 
     //Data gets passed in the constructor
     GuestListAdapter(Context context, Integer guestCount) {
@@ -29,7 +32,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
         this.guestCount = guestCount;
     }
 
-    public ArrayList<guestInReservation> getGuestList(){
+    public ArrayList<GuestInReservation> getGuestList(){
     return guestListData;
     }
 
@@ -37,16 +40,20 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
     @Override
     public GuestListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.hotel_guest_list_layout, parent, false);
+        if(guestListData==null){
+            guestListData=new ArrayList<>();
         for(int i=0;i<guestCount;i++){
-          guestInReservation guests = new guestInReservation();
+          GuestInReservation guests = new GuestInReservation();
+          guests.gender="F";
             guestListData.add(guests);
-        }
+        }}
         return new ViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull GuestListAdapter.ViewHolder holder, int position) {
+        holderList.add(holder);
 
         holder.firstname.addTextChangedListener(new TextWatcher() {
             @Override
@@ -127,7 +134,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
     @Override
     public int getItemCount() {
-        if (guestListData != null) {
+        if (guestCount != null) {
             return guestCount;
         } else {
             return 0;
@@ -143,6 +150,46 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
         EditText firstname, lastname, address, age;
         RadioGroup gender;
+
+        public EditText getFirstname() {
+            return firstname;
+        }
+
+        public void setFirstname(EditText firstname) {
+            this.firstname = firstname;
+        }
+
+        public EditText getLastname() {
+            return lastname;
+        }
+
+        public void setLastname(EditText lastname) {
+            this.lastname = lastname;
+        }
+
+        public EditText getAddress() {
+            return address;
+        }
+
+        public void setAddress(EditText address) {
+            this.address = address;
+        }
+
+        public EditText getAge() {
+            return age;
+        }
+
+        public void setAge(EditText age) {
+            this.age = age;
+        }
+
+        public RadioGroup getGender() {
+            return gender;
+        }
+
+        public void setGender(RadioGroup gender) {
+            this.gender = gender;
+        }
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -164,5 +211,28 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
         }
     }
 
+    public int validateData(ArrayList<ViewHolder> holderList){
+        int res=1;
+        for (ViewHolder holder:holderList) {
+            if(TextUtils.isEmpty(holder.firstname.getText())){
+                holder.firstname.setError("First Name is required");
+                res = 0;
+           }
+            else if(TextUtils.isEmpty(holder.lastname.getText())){
+                holder.lastname.setError("Last Name is required");
+                res = 0;
+            }
+            else if((TextUtils.isEmpty(holder.address.getText()))){
+                holder.address.setError("Address is required");
+                res = 0;
+            }
+            else if((TextUtils.isEmpty(holder.age.getText()))){
+                holder.age.setError("Age is required");
+                res = 0;
+            }
+
+        }
+        return res;
+    }
 
 }

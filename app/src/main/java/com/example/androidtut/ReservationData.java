@@ -4,8 +4,16 @@ import java.util.ArrayList;
 
 public class ReservationData {
 
+    public ReservationData(String hotel_name, String checkin_date, String checkout_date, ArrayList<GuestInReservation> guestInReservation) {
+        this.hotel_name = hotel_name;
+        this.checkin_date = checkin_date;
+        this.checkout_date = checkout_date;
+        this.guestInReservation = guestInReservation;
+    }
+
     String hotel_name;
     String checkin_date;
+    String checkout_date;
 
     public String getHotel_name() {
         return hotel_name;
@@ -31,21 +39,16 @@ public class ReservationData {
         this.checkout_date = checkout_date;
     }
 
-    public ArrayList<guestInReservation> getGuestListData() {
-        return guestInReservations;
+    public ArrayList<GuestInReservation> getGuestInReservation() {
+        return guestInReservation;
     }
 
-    public void setGuestListData(ArrayList<guestInReservation> guestListData) {
-        this.guestInReservations = guestListData;
+    public void setGuestInReservation(ArrayList<GuestInReservation> guestInReservation) {
+        this.guestInReservation = guestInReservation;
     }
 
-    public ReservationData(String hotel_name, String checkin_date, String checkout_date, ArrayList<guestInReservation> guestListData) {
-        this.hotel_name = hotel_name;
-        this.checkin_date = checkin_date;
-        this.checkout_date = checkout_date;
-        this.guestInReservations = guestListData;
-    }
+    ArrayList<GuestInReservation> guestInReservation;
 
-    String checkout_date;
-    ArrayList<guestInReservation> guestInReservations;
+
+
 }

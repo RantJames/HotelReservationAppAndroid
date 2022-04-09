@@ -33,12 +33,14 @@ public class HotelGuestDetailsFragment extends Fragment {
     String guestName, sex;
     RadioButton guestSexRadioButton;
     ProgressBar progressBar;
-    List<guestInReservation> userListResponseData;
+    List<GuestInReservation> userListResponseData;
     Integer numguests;
     GuestListAdapter guestListAdapter;
     Button guestSubmitButton;
     String checkinDate,checkoutDate;
-
+    TextView hotelRecapTextView,guestDetailsNameTextView,guestDetailsSexTextView;
+    EditText guestFirstNameEditText, guestLastNameEditText, guestAddressEditText, guestAgeEditText;
+    int res;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,10 +53,13 @@ public class HotelGuestDetailsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView hotelRecapTextView = view.findViewById(R.id.hotel_recap_text_view);
-        TextView guestDetailsNameTextView = view.findViewById(R.id.hotel_guest_list_first_name_text_view);
-        EditText guestDetailsNameEditText = view.findViewById(R.id.hotel_guest_list_first_name_edittext_view);
-        TextView guestDetailsSexTextView = view.findViewById(R.id.hotel_guest_list_sex_text_view);
+        hotelRecapTextView = view.findViewById(R.id.hotel_recap_text_view);
+        guestDetailsNameTextView = view.findViewById(R.id.hotel_guest_list_first_name_text_view);
+        guestFirstNameEditText = view.findViewById(R.id.hotel_guest_list_first_name_edittext_view);
+        guestLastNameEditText = view.findViewById(R.id.hotel_guest_list_last_name_edittext_view);
+        guestAddressEditText = view.findViewById(R.id.hotel_guest_list_address_edittext_view);
+        guestAgeEditText = view.findViewById(R.id.hotel_guest_list_age_edittext_view);
+        guestDetailsSexTextView = view.findViewById(R.id.hotel_guest_list_sex_text_view);
         RadioGroup guestSexRadioGroup = view.findViewById(R.id.hotel_guest_list_radio_group);
         Button guestSubmitButton = view.findViewById(R.id.guest_submit_button);
         progressBar = view.findViewById(R.id.hotel_guest_list_progress_bar);
@@ -67,12 +72,15 @@ public class HotelGuestDetailsFragment extends Fragment {
         checkoutDate = getArguments().getString("checkoutDate");
 
 
-        hotelRecapTextView.setText("You have selected " + hotelName + ". The cost will be $ " + hotelPrice + " and availability is " + hotelAvailability + " num of guests is " + numguests);
+        hotelRecapTextView.setText("Hotel Name: " + hotelName + "\nPrice: " +"$"+hotelPrice+"\nAvailable Rooms: " +hotelAvailability);
 
         guestSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<guestInReservation> guests = guestListAdapter.getGuestList();
+
+                res=guestListAdapter.validateData(guestListAdapter.holderList);
+                if(res==1){
+                ArrayList<GuestInReservation> guests = guestListAdapter.getGuestList();
                 ReservationData reservationData = new ReservationData(hotelName, checkinDate, checkoutDate, guests);
                 progressBar.setVisibility(View.VISIBLE);
                 Api.getClient().postGuestsLists(reservationData, new Callback<String>() {
@@ -99,8 +107,8 @@ public class HotelGuestDetailsFragment extends Fragment {
                     }
                 });
 
-                    Toast.makeText(getActivity(),guestName+" is "+sex,Toast.LENGTH_LONG).show();
             }
+        }
         });
 
 
@@ -108,8 +116,8 @@ public class HotelGuestDetailsFragment extends Fragment {
         setupRecyclerView();
     }
 
-    public ArrayList<guestInReservation> initGuestListData() {
-        ArrayList<guestInReservation> list = new ArrayList<>();
+    public ArrayList<GuestInReservation> initGuestListData() {
+        ArrayList<GuestInReservation> list = new ArrayList<>();
         return list;
     }
 
@@ -124,5 +132,15 @@ public class HotelGuestDetailsFragment extends Fragment {
         recyclerView.setAdapter(guestListAdapter);
 
     }
+//    public int firstnameValidation(){
+//        if (TextUtils.isEmpty(guestFirstNameEditText.getText())) {
+//            guestFirstNameEditText.setError("First Name is required!");
+//            Toast.makeText(getActivity(), "First Name is required!", Toast.LENGTH_LONG).show();
+//            return 0;
+//        } else {
+//            return 1;
+//        }
+//    }
+
 
 }
