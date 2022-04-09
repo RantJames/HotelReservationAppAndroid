@@ -32,20 +32,20 @@ public class ReservationData {
     }
 
     public ArrayList<guestInReservation> getGuestListData() {
-        return guestInReservations;
+        return guestInReservation;
     }
 
     public void setGuestListData(ArrayList<guestInReservation> guestListData) {
-        this.guestInReservations = guestListData;
+        this.guestInReservation = guestListData;
     }
 
     public ReservationData(String hotel_name, String checkin_date, String checkout_date, ArrayList<guestInReservation> guestListData) {
         this.hotel_name = hotel_name;
         this.checkin_date = checkin_date;
         this.checkout_date = checkout_date;
-        this.guestInReservations = guestListData;
+        this.guestInReservation = guestListData;
     }
 
     String checkout_date;
-    ArrayList<guestInReservation> guestInReservations;
+    ArrayList<guestInReservation> guestInReservation;
 }

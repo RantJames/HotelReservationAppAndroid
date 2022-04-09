@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
+                app:flow_verticalAlign="center"
                 android:gravity="center_horizontal"
                 android:text="Hotel Reservation System"
                 android:textColor="@color/black"

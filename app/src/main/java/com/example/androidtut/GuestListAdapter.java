@@ -2,15 +2,18 @@ package com.example.androidtut;
 
 import android.content.Context;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 
 import java.util.ArrayList;
@@ -20,8 +23,9 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
     private LayoutInflater layoutInflater;
     private ItemClickListener clickListener;
-    private Integer guestCount;
+    private int guestCount;
     ArrayList<guestInReservation> guestListData = new ArrayList<>();
+    ArrayList<ViewHolder> holderList = new ArrayList<>();
 
     //Data gets passed in the constructor
     GuestListAdapter(Context context, Integer guestCount) {
@@ -47,6 +51,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull GuestListAdapter.ViewHolder holder, int position) {
+        holderList.add(holder);
 
         holder.firstname.addTextChangedListener(new TextWatcher() {
             @Override
@@ -144,6 +149,46 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
         EditText firstname, lastname, address, age;
         RadioGroup gender;
 
+        public EditText getFirstname() {
+            return firstname;
+        }
+
+        public void setFirstname(EditText firstname) {
+            this.firstname = firstname;
+        }
+
+        public EditText getLastname() {
+            return lastname;
+        }
+
+        public void setLastname(EditText lastname) {
+            this.lastname = lastname;
+        }
+
+        public EditText getAddress() {
+            return address;
+        }
+
+        public void setAddress(EditText address) {
+            this.address = address;
+        }
+
+        public EditText getAge() {
+            return age;
+        }
+
+        public void setAge(EditText age) {
+            this.age = age;
+        }
+
+        public RadioGroup getGender() {
+            return gender;
+        }
+
+        public void setGender(RadioGroup gender) {
+            this.gender = gender;
+        }
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             firstname = itemView.findViewById(R.id.hotel_guest_list_first_name_edittext_view);
@@ -164,5 +209,28 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
         }
     }
 
+    public int validateData(ArrayList<ViewHolder> holderList){
+        int res=1;
+        for (ViewHolder holder:holderList) {
+            if(TextUtils.isEmpty(holder.firstname.getText())){
+                holder.firstname.setError("First Name is required");
+                res = 0;
+           }
+            else if(TextUtils.isEmpty(holder.lastname.getText())){
+                holder.lastname.setError("Last Name is required");
+                res = 0;
+            }
+            else if((TextUtils.isEmpty(holder.address.getText()))){
+                holder.address.setError("Address is required");
+                res = 0;
+            }
+            else if((TextUtils.isEmpty(holder.age.getText()))){
+                holder.age.setError("Age is required");
+                res = 0;
+            }
+
+        }
+        return res;
+    }
 
 }
