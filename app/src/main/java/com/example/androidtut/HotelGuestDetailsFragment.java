@@ -1,7 +1,6 @@
 package com.example.androidtut;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +33,7 @@ public class HotelGuestDetailsFragment extends Fragment {
     String guestName, sex;
     RadioButton guestSexRadioButton;
     ProgressBar progressBar;
-    List<guestInReservation> userListResponseData;
+    List<GuestInReservation> userListResponseData;
     Integer numguests;
     GuestListAdapter guestListAdapter;
     Button guestSubmitButton;
@@ -73,7 +72,7 @@ public class HotelGuestDetailsFragment extends Fragment {
         checkoutDate = getArguments().getString("checkoutDate");
 
 
-        hotelRecapTextView.setText("You have selected " + hotelName + ". The cost will be $ " + hotelPrice + " and availability is " + hotelAvailability + " num of guests is " + numguests);
+        hotelRecapTextView.setText("Hotel Name: " + hotelName + "\nPrice: " +"$"+hotelPrice+"\nAvailable Rooms: " +hotelAvailability);
 
         guestSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +80,7 @@ public class HotelGuestDetailsFragment extends Fragment {
 
                 res=guestListAdapter.validateData(guestListAdapter.holderList);
                 if(res==1){
-                ArrayList<guestInReservation> guests = guestListAdapter.getGuestList();
+                ArrayList<GuestInReservation> guests = guestListAdapter.getGuestList();
                 ReservationData reservationData = new ReservationData(hotelName, checkinDate, checkoutDate, guests);
                 progressBar.setVisibility(View.VISIBLE);
                 Api.getClient().postGuestsLists(reservationData, new Callback<String>() {
@@ -108,7 +107,6 @@ public class HotelGuestDetailsFragment extends Fragment {
                     }
                 });
 
-                    Toast.makeText(getActivity(),guestName+" is "+sex,Toast.LENGTH_LONG).show();
             }
         }
         });
@@ -118,8 +116,8 @@ public class HotelGuestDetailsFragment extends Fragment {
         setupRecyclerView();
     }
 
-    public ArrayList<guestInReservation> initGuestListData() {
-        ArrayList<guestInReservation> list = new ArrayList<>();
+    public ArrayList<GuestInReservation> initGuestListData() {
+        ArrayList<GuestInReservation> list = new ArrayList<>();
         return list;
     }
 

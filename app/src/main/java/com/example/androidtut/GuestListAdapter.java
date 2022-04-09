@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,8 +22,8 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
     private LayoutInflater layoutInflater;
     private ItemClickListener clickListener;
-    private int guestCount;
-    ArrayList<guestInReservation> guestListData = new ArrayList<>();
+    private Integer guestCount;
+    ArrayList<GuestInReservation> guestListData;
     ArrayList<ViewHolder> holderList = new ArrayList<>();
 
     //Data gets passed in the constructor
@@ -33,7 +32,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
         this.guestCount = guestCount;
     }
 
-    public ArrayList<guestInReservation> getGuestList(){
+    public ArrayList<GuestInReservation> getGuestList(){
     return guestListData;
     }
 
@@ -41,10 +40,12 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
     @Override
     public GuestListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.hotel_guest_list_layout, parent, false);
+        if(guestListData==null){
+            guestListData=new ArrayList<>();
         for(int i=0;i<guestCount;i++){
-          guestInReservation guests = new guestInReservation();
+          GuestInReservation guests = new GuestInReservation();
             guestListData.add(guests);
-        }
+        }}
         return new ViewHolder(view);
 
     }
@@ -132,7 +133,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
     @Override
     public int getItemCount() {
-        if (guestListData != null) {
+        if (guestCount != null) {
             return guestCount;
         } else {
             return 0;

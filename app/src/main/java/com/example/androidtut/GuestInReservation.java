@@ -1,11 +1,11 @@
 package com.example.androidtut;
 
-public class guestInReservation {
+public class GuestInReservation {
 
     String first_name, last_name, gender, address;
     Integer age;
 
-    public guestInReservation(String first_name, String last_name, String gender, String address, Integer age) {
+    public GuestInReservation(String first_name, String last_name, String gender, String address, Integer age) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
@@ -13,7 +13,7 @@ public class guestInReservation {
         this.age = age;
     }
 
-    public guestInReservation() {
+    public GuestInReservation() {
 
     }
 

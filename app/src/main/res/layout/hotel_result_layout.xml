@@ -4,6 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/layout_border"
+    android:layout_marginTop="40dp"
+    android:layout_marginLeft="10dp"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <!--    <TextView-->
@@ -13,13 +16,6 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:flow_verticalAlign="center"-->
 <!--        />-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="10dp">
 
         <TextView
             android:id="@+id/hotel_name_text_view"
@@ -64,6 +60,5 @@
             android:textSize="20sp"
             android:textColor="@color/black"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
