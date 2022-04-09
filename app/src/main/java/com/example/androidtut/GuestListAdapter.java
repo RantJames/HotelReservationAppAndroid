@@ -44,6 +44,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
             guestListData=new ArrayList<>();
         for(int i=0;i<guestCount;i++){
           GuestInReservation guests = new GuestInReservation();
+          guests.gender="F";
             guestListData.add(guests);
         }}
         return new ViewHolder(view);
